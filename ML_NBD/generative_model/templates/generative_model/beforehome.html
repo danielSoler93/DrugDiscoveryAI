@@ -1,0 +1,13 @@
+{% extends "generative_model/base.html" %}
+{% block content %}
+  <h1>Generative Models</h1>
+  {%for model in models%}
+    {% if model.title == "rnn" %}
+        <h2>{{model.title}}</h2>
+        <a class={{model.title}} href="{% url 'generative-rnn'%}">Use {{model.title}} model</a>
+    {% elif model.title == "vae" %}
+        <h2>{{model.title}}</h2>
+        <a class={{model.title}} href="{% url 'generative-vae'%}">Use {{model.title}} model</a>
+    {% endif %}
+  {% endfor %}
+{% endblock content %}
