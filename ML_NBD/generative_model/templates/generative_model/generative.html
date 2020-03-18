@@ -59,7 +59,7 @@ https://templatemo.com/tm-539-simple-house
 				</nav>
 			</div>
 
-			<form method="post" action="/generative_model/">
+			<form method="post" action="/generative_model/" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{form}}
 				<button type="submit", name="save">Create molecules</button>
