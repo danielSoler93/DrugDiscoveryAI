@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Simple House Template</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
-	<link href="{% static 'css/templatemo-style.css' %}" type="text/css"  rel="stylesheet" />
+	<link href="{% static 'css/templatemo-style.css' %}"   rel="stylesheet" />
 </head>
 <!--
 
@@ -23,7 +23,7 @@ https://templatemo.com/tm-539-simple-house
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
 		<div class="placeholder">
-			<div class="parallax-window" data-parallax="scroll" data-image-src="{% static  'img/simple-house-01.jpg' %}">
+			<div class="parallax-window" data-parallax="scroll" data-image-src="{% static  'img/header.jpg' %}">
 				<div class="tm-header">
 					<div class="row tm-header-inner">
 						<div class="col-md-6 col-12">
@@ -36,8 +36,8 @@ https://templatemo.com/tm-539-simple-house
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="index.html" class="tm-nav-link active">Generative Models</a></li>
-								<li class="tm-nav-li"><a href="about.html" class="tm-nav-link">QSAR</a></li>
-								<li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Analogs Finder</a></li>
+								<!--<li class="tm-nav-li"><a href="about.html" class="tm-nav-link">QSAR</a></li>>
+								<!--<li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Analogs Finder</a></li>-->
 							</ul>
 						</nav>	
 					</div>
@@ -63,10 +63,10 @@ https://templatemo.com/tm-539-simple-house
 			<!-- Gallery -->
 			<div class="row tm-gallery">
 				<!-- gallery page 1 -->
-				<div id="tm-gallery-page-pizza" class="tm-gallery-page">
+				<div id="tm-gallery-page-rnn" class="tm-gallery-page">
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
-							<img src="{% static  'img/gallery/01.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+							<img src="{% static  'img/gallery/01.png' %}" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
 								<h4 class="tm-gallery-title">High throughput</h4>
 								<p class="tm-gallery-description">Grow fragments from core in all
@@ -76,7 +76,7 @@ https://templatemo.com/tm-539-simple-house
 					</article>
 					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
 						<figure>
-							<img src="{% static  'img/gallery/02.jpg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+							<img src="{% static  'img/gallery/02.jpeg' %}" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
 								<h4 class="tm-gallery-title">Low Throughput</h4>
 								<p class="tm-gallery-description">Grow in a specific direction.</p>
@@ -84,6 +84,49 @@ https://templatemo.com/tm-539-simple-house
 						</figure>
 					</article>
 				</div> <!-- gallery page 1 -->
+				<!-- gallery page 2 -->
+				<div id="tm-gallery-page-vae" class="tm-gallery-page hidden">
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{% static  'img/gallery/03.jpeg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">VAE</h4>
+								<p class="tm-gallery-description">Generate as many similar molecules as possible to a given core.</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{% static  'img/gallery/04.jpeg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">Conditional VAE</h4>
+								<p class="tm-gallery-description">Generate molecules with several conditions by changing the model loss function</p>
+							</figcaption>
+						</figure>
+					</article>
+				</div> <!-- gallery page 2 -->
+				<!-- gallery page 3 -->
+				<div id="tm-gallery-page-gan" class="tm-gallery-page hidden">
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{% static  'img/gallery/05.png' %}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">HT GAN model</h4>
+								<p class="tm-gallery-description">Not Implemented Yet</p>
+							</figcaption>
+						</figure>
+					</article>
+					<article class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+						<figure>
+							<img src="{% static  'img/gallery/06.jpeg' %}" alt="Image" class="img-fluid tm-gallery-img" />
+							<figcaption>
+								<h4 class="tm-gallery-title">GAN model with Reinforcement Learning</h4>
+								<p class="tm-gallery-description">Not Implemented Yet</p>
+
+							</figcaption>
+						</figure>
+					</article>
+				</div> <!-- gallery page 3 -->
 			</div>
 		</main>
 
@@ -92,8 +135,8 @@ https://templatemo.com/tm-539-simple-house
             | Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a></p>
 		</footer>
 	</div>
-	<script src="js/jquery.min.js"></script>
-	<script src="js/parallax.min.js"></script>
+	<script src="{% static  'js/jquery.min.js' %}"></script>
+	<script src="{% static  'js/parallax.min.js' %}"></script>
 	<script>
 		$(document).ready(function(){
 			// Handle click on paging links
