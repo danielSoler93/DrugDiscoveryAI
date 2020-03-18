@@ -11,7 +11,7 @@ def home(request):
     context = {
         'models' : MODELS
     }
-    return render(request, "generative_model/home.html", context)
+    return render(request, "generative_model/generative.html", context)
 
 def RNN(request):
     return render(request, "generative_model/rnn.html")

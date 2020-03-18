@@ -15,8 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from . import views as vw
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('home/', vw.home, name="nbddd-home"),
     path('generative_model/', include('generative_model.urls'))
 ]
