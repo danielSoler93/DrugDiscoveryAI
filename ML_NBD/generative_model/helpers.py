@@ -18,8 +18,9 @@ class cd:
         os.chdir(self.savedPath)
 
 
-def launch_generative_model(input_path):
-    command = "python -m growai.grow --pdb {} --resname TOL --only_grow --grow_iterations 2 ".format(input_path)
+def launch_generative_model(input_path, resname, iterations):
+    command = "python -m growai.grow --pdb {} --resname {} --only_grow --grow_iterations {} ".format(
+        input_path, resname, iterations)
     tmp_dir = tempfile.mkdtemp()
     with cd(tmp_dir):
         subprocess.call(command.split())
@@ -27,6 +28,8 @@ def launch_generative_model(input_path):
 
 
 def make_zip(source_dir, output_filename="results.zip"):
+    output_filename = "results_{}.zip".format(
+    os.path.basename(source_dir))
     command = "zip -r {} {}".format(output_filename, source_dir)
     subprocess.call(command.split())
     return output_filename

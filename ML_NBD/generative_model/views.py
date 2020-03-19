@@ -21,10 +21,14 @@ def home(request):
         if form.is_valid():
             form.save()
             complex = form.cleaned_data
-            input_path = os.path.abspath(os.path.join(mo.GENERATIVE_OUT, str(complex["sdf"])))
-            output_dir = hp.launch_generative_model(input_path)
+            input_path = os.path.abspath(os.path.join(mo.GENERATIVE_OUT, str(complex["pdb"])))
+            iterations = complex["iterations"]
+            resname = complex["residue_name"]
+            output_dir = hp.launch_generative_model(input_path, resname, iterations)
+            print(output_dir)
             zip_file = hp.make_zip(output_dir)
             zip_file_obj = open(zip_file, 'rb')
+            os.remove(zip_file)
             return FileResponse(zip_file_obj)
         else:
             raise(form.errors)

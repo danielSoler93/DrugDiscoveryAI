@@ -4,4 +4,4 @@ from . import models as md
 class GenerativeForm(forms.ModelForm):
     class Meta:
         model = md.GenerativeModel
-        fields = ('sdf', )
+        fields = ('pdb', 'residue_name', 'iterations')
