@@ -14,7 +14,7 @@ def success(request):
 
 def home(request):
     context = {
-        'form' : fo.GenerativeForm()
+        'form': fo.GenerativeForm()
     }
     if request.method == "POST":
         form = fo.GenerativeForm(request.POST, request.FILES)
@@ -25,7 +25,6 @@ def home(request):
             iterations = complex["iterations"]
             resname = complex["residue_name"]
             output_dir = hp.launch_generative_model(input_path, resname, iterations)
-            print(output_dir)
             zip_file = hp.make_zip(output_dir)
             zip_file_obj = open(zip_file, 'rb')
             os.remove(zip_file)

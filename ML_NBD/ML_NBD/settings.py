@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'analogs_search.apps.AnalogsSearchConfig',
     'generative_model.apps.GenerativeModelConfig',
     'django.contrib.admin',
     'django.contrib.auth',

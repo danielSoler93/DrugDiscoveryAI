@@ -37,6 +37,8 @@ https://templatemo.com/tm-539-simple-house
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="{% url 'nbddd-home'%}"class="tm-nav-link active">Home</a></li>
 								<li class="tm-nav-li"><a href="{% url 'generative-home'%}" class="tm-nav-link">Generative Models</a></li>
+								<li class="tm-nav-li"><a href="{% url 'analogs-home'%}" class="tm-nav-link">Analogs Search</a></li>
+
 								<!--<li class="tm-nav-li"><a href="about.html" class="tm-nav-link">QSAR</a></li>>
 								<!--<li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Analogs Finder</a></li>-->
 							</ul>
@@ -77,7 +79,7 @@ https://templatemo.com/tm-539-simple-house
 						<figure>
 							<img src="{% static  'img/gallery/01.png' %}" alt="Image" class="img-fluid tm-gallery-img" />
 							<figcaption>
-								<h4 class="tm-gallery-title">Analogs Finder</h4>
+								<h4 class="tm-gallery-title"><a href="{% url 'analogs-home'%}" class="link_article" style="text-decoration: none;">Analogs Finder</a></h4>
 								<p class="tm-gallery-description">Search analogs for your hit with several optimised methodologies</p>
 							</figcaption>
 						</figure>

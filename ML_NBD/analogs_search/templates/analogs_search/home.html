@@ -24,6 +24,7 @@ https://templatemo.com/tm-539-simple-house
 	<div class="container">
 	<!-- Top box -->
 		<!-- Logo & Site Name -->
+
 		<div class="placeholder">
 			<div class="parallax-window" data-parallax="scroll" data-image-src="{% static  'img/header.jpg' %}">
 				<div class="tm-header">
@@ -31,15 +32,15 @@ https://templatemo.com/tm-539-simple-house
 						<div class="col-md-6 col-12">
 							<img src="{% static  'img/simple-house-logo.png' %}" alt="Logo" class="tm-site-logo" />
 							<div class="tm-site-text-box">
-								<h1 class="tm-site-title">Generative Models</h1>
-								<h6 class="tm-site-description">Grow your core molecule automatically!</h6>
+								<h1 class="tm-site-title">Analogs Search</h1>
+								<h6 class="tm-site-description">Find analogs compounds to your hit!</h6>
 							</div>
 						</div>
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="{% url 'nbddd-home'%}"class="tm-nav-link">Home</a></li>
-								<li class="tm-nav-li"><a href="{% url 'generative-home'%}" class="tm-nav-link active">Generative Models</a></li>
-								<li class="tm-nav-li"><a href="{% url 'analogs-home'%}" class="tm-nav-link">Analogs Search</a></li>
+								<li class="tm-nav-li"><a href="{% url 'generative-home'%}" class="tm-nav-link ">Generative Models</a></li
+								<li class="tm-nav-li"><a href="{% url 'analogs-home'%}" class="tm-nav-link active">Analogs Search</a></li>
 
 								<!--<li class="tm-nav-li"><a href="about.html" class="tm-nav-link">QSAR</a></li>>
 								<!--<li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Analogs Finder</a></li>-->
@@ -52,19 +53,19 @@ https://templatemo.com/tm-539-simple-house
 
 		<main>
 			<header class="row tm-welcome-section">
-				<h2 class="col-12 text-center tm-section-title">Welcome to NostrumAI</h2>
+				<h2 class="col-12 text-center tm-section-title">Welcome to NostrumDD</h2>
 			</header>
 			
 			<div class="tm-paging-links">
 				<nav>
 					<ul>
-						<li class="tm-paging-item"><div href="#" class="tm-paging-link active">Generative Model Form</div></li>
+						<li class="tm-paging-item"><div href="#" class="tm-paging-link active">Analogs Search Form</div></li>
 					</ul>
 				</nav>
 			</div>
 			<center>
 			<div class="text-left" style="max-width:500px">
-			<form method="post" action="/generative_model/" enctype="multipart/form-data">
+			<form method="post" action="/analogs_search/" enctype="multipart/form-data">
 	            {% csrf_token %}
 				{% for field in form %}
 				<div class='form-group'>
@@ -72,7 +73,7 @@ https://templatemo.com/tm-539-simple-house
 				  {{ field }}
 				</div>
 				{% endfor %}
-				<center><button type="submit", name="save" class="btn btn-success btn-lg" style="margin-bottom: 30px">Generate molecules</button></center>
+				<center><button type="submit", name="save" class="btn btn-success btn-lg" style="margin-bottom: 30px">Search molecules</button></center>
 			</form>
 			</center>
 		    </div>

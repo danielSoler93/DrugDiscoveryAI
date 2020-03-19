@@ -20,5 +20,7 @@ from . import views as vw
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', vw.home, name="nbddd-home"),
-    path('generative_model/', include('generative_model.urls'))
+    path('generative_model/', include('generative_model.urls')),
+    path('analogs_search/', include('analogs_search.urls'))
+
 ]
