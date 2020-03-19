@@ -56,16 +56,24 @@ https://templatemo.com/tm-539-simple-house
 			<div class="tm-paging-links">
 				<nav>
 					<ul>
-						<li class="tm-paging-item"><div href="#" class="tm-paging-link active">Models Available</div></li>
+						<li class="tm-paging-item"><div href="#" class="tm-paging-link active">Generative Model Form</div></li>
 					</ul>
 				</nav>
 			</div>
-
+			<center>
+			<div class="text-left" style="max-width:500px">
 			<form method="post" action="/generative_model/" enctype="multipart/form-data">
-				{% csrf_token %}
-    			{{ form|crispy }}
-				<button type="submit", name="save">Create molecules</button>
+	            {% csrf_token %}
+				{% for field in form %}
+				<div class='form-group'>
+				  <label for="{{ field.name }}">{{ field.label }}</label>
+				  {{ field }}
+				</div>
+				{% endfor %}
+				<center><button type="submit", name="save" class="btn btn-success btn-lg" style="margin-bottom: 30px">Create molecules</button></center>
 			</form>
+			</center>
+		    </div>
 			</div>
 		</main>
 
