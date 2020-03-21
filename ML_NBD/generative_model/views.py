@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect
+from . import forms as fo
+from. import tasks as hp
 from django.http import HttpResponse, FileResponse
 import os
-from . import helpers as hp
-from . import forms as fo
-from . import models as mo
+from . import  models as mo
+
 
 # Create your views here.
 
@@ -24,11 +25,9 @@ def home(request):
             input_path = os.path.abspath(os.path.join(mo.GENERATIVE_OUT, str(complex["pdb"])))
             iterations = complex["iterations"]
             resname = complex["residue_name"]
-            output_dir = hp.launch_generative_model(input_path, resname, iterations)
-            zip_file = hp.make_zip(output_dir)
-            zip_file_obj = open(zip_file, 'rb')
-            os.remove(zip_file)
-            return FileResponse(zip_file_obj)
+            hp.launch_generative_workflow.delay(input_path, resname, iterations)
+            #hp.launch_generative_workflow(input_path, resname, iterations)
+            return HttpResponse('work kicked off!')
         else:
             raise(form.errors)
     else:

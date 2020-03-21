@@ -1,7 +1,15 @@
 import os
 import tempfile
 import subprocess
-import xtarfile as tarfile
+from celery import shared_task
+from django.http import HttpResponse, FileResponse
+from . import models as mo
+import os
+from . import tasks as hp
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+
+
 
 
 
@@ -16,6 +24,7 @@ class cd:
 
     def __exit__(self, etype, value, traceback):
         os.chdir(self.savedPath)
+
 
 
 def launch_generative_model(input_path, resname, iterations):
@@ -33,3 +42,20 @@ def make_zip(source_dir, output_filename="results.zip"):
     command = "zip -r {} {}".format(output_filename, source_dir)
     subprocess.call(command.split())
     return output_filename
+
+def download_zip(zip_file):
+    zip_file_obj = open(zip_file, 'rb')
+    os.remove(zip_file)
+    return FileResponse(zip_file_obj)
+
+@shared_task
+def launch_generative_workflow(input_path, resname, iterations):
+    output_dir = hp.launch_generative_model(input_path, resname, iterations)
+    zip_file = hp.make_zip(output_dir)
+    email = EmailMessage("NBDD-generative results",
+                         "Here you have your results from NBD's generative model",
+                         "dany.bcn.93@gmail.com",
+                         ["daniel.soler@nostrumbiodiscovery.com"])
+    email.attach_file(zip_file)
+    email.send()
+    return 'done'
