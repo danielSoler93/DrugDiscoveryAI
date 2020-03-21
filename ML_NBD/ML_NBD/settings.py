@@ -42,7 +42,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'd0qyjn-yzmrc@)8mzw%c4jo=e!^vpnyo(yq_h7_v&bg8*9n*wz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -147,5 +147,5 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "dany.bcn.93@gmail.com"
-EMAIL_HOST_PASSWORD = "-----"
+EMAIL_HOST_PASSWORD = "miniaoshi1"
 EMAIL_PORT = 587

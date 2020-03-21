@@ -1,6 +1,10 @@
 import os
 import tempfile
 import subprocess
+from django.core.mail import send_mail
+from django.core.mail import EmailMessage
+from celery import shared_task
+
 
 
 
@@ -17,18 +21,24 @@ class cd:
         os.chdir(self.savedPath)
 
 
-def launch_analogs_finder(query_molecule, database):
+@shared_task
+def launch_analogsearch_workflow(query_molecule, database):
     command = "python -m analogs_finder.main {} {} --fp_type DL circular torsions MACCS --tresh 0.7 0.4 0.7 0.7".format(
         database, query_molecule)
     tmp_dir = tempfile.mkdtemp()
     with cd(tmp_dir):
         subprocess.call(command.split())
-    return tmp_dir
-
-
-def make_zip(source_dir, output_filename="results.zip"):
     output_filename = "results_{}.zip".format(
-    os.path.basename(source_dir))
-    command = "zip -r {} {}".format(output_filename, source_dir)
+    os.path.basename(tmp_dir))
+    command = "zip -r {} {}".format(output_filename, tmp_dir)
     subprocess.call(command.split())
-    return output_filename
+    email = EmailMessage("NBDD-analogs results",
+                         "Here you have your results from NBD's analog search",
+                         "dany.bcn.93@gmail.com",
+                         ["daniel.soler@nostrumbiodiscovery.com"])
+    email.attach_file(output_filename)
+    email.send()
+    return 'done'
+
+
+
