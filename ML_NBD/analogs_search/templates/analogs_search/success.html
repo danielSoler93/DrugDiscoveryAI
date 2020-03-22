@@ -6,7 +6,7 @@
 	<meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Simple House Template</title>
+    <title>NBDD</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />    
 	<link href="{% static 'css/templatemo-style.css' %}"   rel="stylesheet" />
 </head>
@@ -36,8 +36,8 @@ https://templatemo.com/tm-539-simple-house
 						<nav class="col-md-6 col-12 tm-nav">
 							<ul class="tm-nav-ul">
 								<li class="tm-nav-li"><a href="{% url 'nbddd-home'%}"class="tm-nav-link">Home</a></li>
-								<li class="tm-nav-li"><a href="{% url 'analogs-home'%}" class="tm-nav-link active">Generative Models</a></li>
-								<!--<li class="tm-nav-li"><a href="about.html" class="tm-nav-link">QSAR</a></li>>
+								<li class="tm-nav-li"><a href="{% url 'analogs-home'%}" class="tm-nav-link">Generative Models</a></li>
+								<li class="tm-nav-li"><a href="{% url 'analogs-home'%}" class="tm-nav-link active">Analogs Search</a></li>
 								<!--<li class="tm-nav-li"><a href="contact.html" class="tm-nav-link">Analogs Finder</a></li>-->
 							</ul>
 						</nav>	
@@ -54,7 +54,7 @@ https://templatemo.com/tm-539-simple-house
 			<div class="tm-paging-links">
 				<nav>
 					<ul>
-						<li class="tm-paging-item"><div href="#" class="tm-paging-link active">Success!</div></li>
+						<li class="tm-paging-item"><div href="#" class="tm-paging-link active">{{text}}</div></li>
 					</ul>
 				</nav>
 			</div>

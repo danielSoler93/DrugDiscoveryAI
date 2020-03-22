@@ -49,13 +49,14 @@ def download_zip(zip_file):
     return FileResponse(zip_file_obj)
 
 @shared_task
-def launch_generative_workflow(input_path, resname, iterations):
+def launch_generative_workflow(input_path, resname,
+                               iterations, email):
     output_dir = hp.launch_generative_model(input_path, resname, iterations)
     zip_file = hp.make_zip(output_dir)
     email = EmailMessage("NBDD-generative results",
                          "Here you have your results from NBD's generative model",
                          "dany.bcn.93@gmail.com",
-                         ["daniel.soler@nostrumbiodiscovery.com"])
+                         [email,])
     email.attach_file(zip_file)
     email.send()
     return 'done'

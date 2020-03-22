@@ -22,7 +22,7 @@ class cd:
 
 
 @shared_task
-def launch_analogsearch_workflow(query_molecule, database):
+def launch_analogsearch_workflow(query_molecule, database, email):
     command = "python -m analogs_finder.main {} {} --fp_type DL circular torsions MACCS --tresh 0.7 0.4 0.7 0.7".format(
         database, query_molecule)
     tmp_dir = tempfile.mkdtemp()
@@ -35,7 +35,7 @@ def launch_analogsearch_workflow(query_molecule, database):
     email = EmailMessage("NBDD-analogs results",
                          "Here you have your results from NBD's analog search",
                          "dany.bcn.93@gmail.com",
-                         ["daniel.soler@nostrumbiodiscovery.com"])
+                         [email])
     email.attach_file(output_filename)
     email.send()
     return 'done'

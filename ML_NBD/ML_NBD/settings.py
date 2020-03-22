@@ -39,12 +39,24 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'd0qyjn-yzmrc@)8mzw%c4jo=e!^vpnyo(yq_h7_v&bg8*9n*wz'
+SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
+SECURE_HSTS_SECONDS = 31536000
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
+SECURE_HSTS_PRELOAD = True
+#Have a look
+SECURE_REFERRER_POLICY = []
+SECURE_CONTENT_TYPE_NOSNIFF = True
+
+
 
 
 # Application definition
@@ -62,6 +74,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,6 +103,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ML_NBD.wsgi.application'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 # Database
@@ -140,6 +156,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
+
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -147,5 +167,12 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_USE_TLS = True
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_HOST_USER = "dany.bcn.93@gmail.com"
-EMAIL_HOST_PASSWORD = "-----"
+EMAIL_HOST_PASSWORD = "------"
 EMAIL_PORT = 587
+
+
+
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
